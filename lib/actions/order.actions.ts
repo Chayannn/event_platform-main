@@ -21,11 +21,9 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
   const price = order.isFree ? 0 : Number(order.price) * 100;
 
   try {
-    // Create Checkout Sessions from body params.
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
-          // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
           price_data: {
             currency: "usd",
             unit_amount: price,
@@ -36,15 +34,21 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
           quantity: 1,
         },
       ],
+      metadata: {
+        eventId: order.eventId,
+        buyerId: order.buyerId,
+      },
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,
       cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/`,
     });
+
     redirect(session.url!);
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
+
 export const createOrder = async (order: CreateOrderParams) => {
   try {
     await connectToDatabase();
