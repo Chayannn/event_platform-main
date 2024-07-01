@@ -7,6 +7,7 @@ import { checkoutAccess } from "@/lib/actions/access.actions";
 loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 const SubscribePage = async ({ userId }: { userId: string }) => {
+  
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
