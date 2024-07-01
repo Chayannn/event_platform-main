@@ -111,6 +111,9 @@ export type CheckoutOrderParams = {
   isFree: boolean;
   buyerId: string;
 };
+export type CheckoutAccessParams = {
+  buyerId: string;
+};
 
 export type CreateOrderParams = {
   stripeId: string;

@@ -4,8 +4,8 @@ export const headerLinks = [
     route: '/',
   },
   {
-    label: 'Create Event',
-    route: '/events/create',
+    label: 'Create Pass',
+    route: '/subscribe',
   },
   {
     label: 'My Profile',
@@ -25,3 +25,4 @@ export const eventDefaultValues = {
   isFree: false,
   url: '',
 }
+// route: '/events/create',
