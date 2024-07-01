@@ -28,7 +28,7 @@ export const checkoutAccess = async (order: CheckoutAccessParams) => {
         buyerId: order.buyerId,
       },
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,
+      success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/events/create`,
       cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/`,
     });
 
