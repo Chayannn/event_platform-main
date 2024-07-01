@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
@@ -6,7 +6,7 @@ import { checkoutAccess } from "@/lib/actions/access.actions";
 
 loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-const page = ({ userId }: { userId: string }) => {
+const SubscribePage = async ({ userId }: { userId: string }) => {
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
@@ -49,7 +49,7 @@ const page = ({ userId }: { userId: string }) => {
                 </p>
                 <p className="mt-6 flex items-baseline justify-center gap-x-2">
                   <span className="text-5xl font-bold tracking-tight text-gray-900">
-                  ₹349
+                    ₹349
                   </span>
                   <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">
                     inr
@@ -58,8 +58,7 @@ const page = ({ userId }: { userId: string }) => {
                 <a
                   href="#"
                   className="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  onClick={onCheckout}
-                >
+                  onClick={onCheckout}>
                   Get access
                 </a>
                 <p className="mt-6 text-xs leading-5 text-gray-600">
@@ -74,4 +73,4 @@ const page = ({ userId }: { userId: string }) => {
   );
 };
 
-export default page;
+export default SubscribePage;
